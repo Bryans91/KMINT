@@ -21,7 +21,7 @@ int main(int args[])
 	application->SetColor(Color(255, 10, 40, 255));
 	
 	Game game;
-	game.createGraph("map.txt",10,10);
+	
 
 	//while (true){}
 	while (application->IsRunning())
