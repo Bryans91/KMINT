@@ -1,3 +1,6 @@
 ﻿  Main.cpp
-c:\users\bryan\source\repos\kmint\framework\sdlframework\sdlframework\main.cpp(40): warning C4065: switch statement contains 'default' but no 'case' labels
+c:\users\bryan\source\repos\kmint\framework\sdlframework\sdlframework\main.cpp(43): warning C4065: switch statement contains 'default' but no 'case' labels
+  Graph.cpp
+  Game.cpp
+  Generating Code...
   SDLFramework.vcxproj -> C:\Users\bryan\source\repos\KMINT\Framework\SDLFramework\Debug\SDLFramework.exe

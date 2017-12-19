@@ -4,6 +4,7 @@
 #include <SDL_events.h>
 #include "SDL_timer.h"
 #include <time.h>
+#include "Game.h"
 
 int main(int args[])
 {
@@ -18,6 +19,8 @@ int main(int args[])
 	application->SetTargetFPS(60);
 	application->SetColor(Color(255, 10, 40, 255));
 	
+	Game game;
+	game.createGraph("map.txt",10,10);
 
 	//while (true){}
 	while (application->IsRunning())
@@ -40,6 +43,8 @@ int main(int args[])
 				}
 			}
 		}
+
+		
 		
 		application->SetColor(Color(0, 0, 0, 255));
 		application->DrawText("Welcome to KMint", 800 / 2, 600 / 2);
