@@ -10,7 +10,7 @@ public:
 	Graph(int blockWidth,int blockHeight);
 	~Graph();
 	
-	void loadMap(std::string filename, GraphWalker meneer, GraphWalker mevrouw);
+	void loadMap(std::string filename, GraphWalker mister, GraphWalker misses);
 	void drawMap(FWApplication application);
 
 private:

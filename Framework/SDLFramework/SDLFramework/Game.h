@@ -9,14 +9,14 @@ public:
 	Game();
 	~Game();
 
-	void createGraph(std::string filename, int blockWidth, int blockHeight,GraphWalker meneer,GraphWalker mevrouw);
+	void createGraph(std::string filename, int blockWidth, int blockHeight);
 	void drawObjects(FWApplication application);
 
 private:
 	Graph graph;
 	GraphWalker dog;
-	GraphWalker meneer;
-	GraphWalker mevrouw;
+	GraphWalker mister;
+	GraphWalker misses;
 
 };
 

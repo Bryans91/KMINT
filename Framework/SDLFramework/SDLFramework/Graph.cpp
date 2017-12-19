@@ -19,7 +19,7 @@ Graph::~Graph()
 {
 }
 
-void Graph::loadMap(std::string filename, GraphWalker meneer, GraphWalker mevrouw)
+void Graph::loadMap(std::string filename, GraphWalker mister, GraphWalker misses)
 {
 	int x = 0;
 	int y = 0;
@@ -40,12 +40,12 @@ void Graph::loadMap(std::string filename, GraphWalker meneer, GraphWalker mevrou
 					break;
 				case 'M':
 					//meneer janssen
-					temp.setWalker(meneer);
+					temp.setWalker(mister);
 					temp.setGrass(true);
 					break;
 				case 'V':
 					//mevrouw janssen
-					temp.setWalker(mevrouw);
+					temp.setWalker(misses);
 					temp.setGrass(true);
 					break;
 				case 'O':

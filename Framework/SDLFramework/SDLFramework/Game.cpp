@@ -12,10 +12,10 @@ Game::~Game()
 {
 }
 
-void Game::createGraph(std::string filename, int blockWidth, int blockHeight, GraphWalker meneer, GraphWalker mevrouw)
+void Game::createGraph(std::string filename, int blockWidth, int blockHeight)
 {
 	this->graph = Graph(blockWidth, blockHeight);
-	this->graph.loadMap(filename, meneer, mevrouw);
+	this->graph.loadMap(filename, this->mister, this->misses);
 }
 
 void Game::drawObjects(FWApplication application)
