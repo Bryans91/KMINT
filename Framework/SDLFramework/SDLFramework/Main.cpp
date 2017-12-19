@@ -1,4 +1,5 @@
 #include <iostream>
+#define _CRTDBG_MAP_ALLOC
 #include "Config.h"
 #include "FWApplication.h"
 #include <SDL_events.h>
@@ -56,6 +57,6 @@ int main(int args[])
 		application->RenderGameObjects();
 		application->EndTick();
 	}
-		
+	_CrtDumpMemoryLeaks();
 	return EXIT_SUCCESS;
 }
