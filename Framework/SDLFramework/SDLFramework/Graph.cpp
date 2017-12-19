@@ -31,8 +31,12 @@ void Graph::loadMap(std::string filename, GraphWalker mister, GraphWalker misses
 		
 		//per char in line
 		for (char& c : str) {
+
 			if (y == 0) x++;
 			Vertex temp;
+			temp.setX(x);
+			temp.setY(y);
+
 			switch (c) {
 				case '~':
 					//water
@@ -87,6 +91,10 @@ void Graph::loadMap(std::string filename, GraphWalker mister, GraphWalker misses
 
 void Graph::drawMap(FWApplication application)
 {
+	for each(Vertex vert in this->verteces) {
+
+
+	}
 }
 
 void Graph::setEdges()
