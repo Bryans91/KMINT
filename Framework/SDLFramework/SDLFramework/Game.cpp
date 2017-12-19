@@ -4,7 +4,7 @@
 
 Game::Game()
 {
-	this->createGraph("map.txt", 10, 10, this->meneer, this->mevrouw);
+	this->createGraph("map.txt", 10, 10);
 }
 
 
