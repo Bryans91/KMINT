@@ -1,10 +1,11 @@
 #include "Game.h"
 
-
-
 Game::Game()
 {
+	this->misses = std::shared_ptr<GraphWalker>(new GraphWalker);
+	this->mister = std::shared_ptr<GraphWalker>(new GraphWalker);
 	this->createGraph("map.txt", 10, 10);
+	
 }
 
 

@@ -3,6 +3,8 @@
 #include <string>
 #include "FWApplication.h"
 #include "GraphWalker.h"
+#include <memory>
+
 class Game
 {
 public:
@@ -14,9 +16,9 @@ public:
 
 private:
 	Graph graph;
-	GraphWalker dog;
-	GraphWalker mister;
-	GraphWalker misses;
+	std::shared_ptr<GraphWalker>  dog;
+	std::shared_ptr<GraphWalker>  mister;
+	std::shared_ptr<GraphWalker>  misses;
 
 };
 

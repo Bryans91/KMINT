@@ -1,19 +1,38 @@
 #pragma once
+#ifndef VERTEX_H
+#define VERTEX_H
+
 #include "GraphWalker.h"
+#include <vector>
+#include <memory>
+#include "Edge.h"
+
+
+class Edge;
+
 class Vertex
 {
 public:
 	Vertex();
 	~Vertex();
 
+	//normal var operator
 	bool operator==(const Vertex& rhs) const {
-		return this->x == rhs.x && this->y == rhs.y;
+		return (this->x == rhs.x && this->y == rhs.y);
 	}
-	
-	//getters/setters
-	void setWalker(GraphWalker w) { this->walker = w; }
-	GraphWalker getWalker() const { return this->walker; }
+	//std::shared_ptr<Vertex>
+	//shared pointer operator
+	bool operator==(const std::shared_ptr<Vertex>& rhs) {
+		return (this->x == rhs->getX() && this->y == rhs->getY());
+	};
 
+
+	std::vector<std::shared_ptr<Edge>> getNeighbors() { return this->neighbors; }
+	void addNeighbor(std::shared_ptr<Edge> e);
+	
+	std::shared_ptr<GraphWalker> walker = nullptr;
+
+	//getters/setters
 	void setGrass(bool w) { this->grass = w; }
 	bool isGrass() const { return this->grass; }
 
@@ -30,13 +49,14 @@ public:
 	bool getY() const { return this->y; }
 
 private:
-	bool water = false;
-	bool cave = false;
-	bool grass = false;
+	std::vector<std::shared_ptr<Edge>> neighbors;
 
 	int x;
 	int y;
-	
-	GraphWalker walker;
+
+	bool water = false;
+	bool cave = false;
+	bool grass = false;
 };
 
+#endif
