@@ -116,8 +116,8 @@ Vector2 Vector2::operator/(const float scalar)
 		return Vector2(this->x, this->y);
 	}
 
-	float x = x / scalar;
-	float y = y / scalar;
+	float x = this->x / scalar;
+	float y = this->y / scalar;
 
 	if (isnan(x) || isnan(y))
 	{
