@@ -1,5 +1,5 @@
 #pragma once
-#include "Vector.h"
+#include "Vector2.h"
 //FORCE DRIVEN ENTITY
 class Rabbit
 {
@@ -29,9 +29,9 @@ private:
 
 
 	//Forces
-	Vector m_Velocity;
-	Vector m_Heading;
-	Vector m_Side;
+	Vector2 m_Velocity;
+	Vector2 m_Heading;
+	Vector2 m_Side;
 	
 	float m_Mass;
 	float m_MaxSpeed;
