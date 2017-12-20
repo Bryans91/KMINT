@@ -20,7 +20,7 @@ int main(int args[])
 	application->SetTargetFPS(60);
 	application->SetColor(Color(255, 10, 40, 255));
 	
-	Game game;
+	Game game(application);
 	
 
 	//while (true){}
@@ -51,8 +51,6 @@ int main(int args[])
 
 		// For the background
 		application->SetColor(Color(255, 255, 255, 255));
-
-		game.update();
 		game.drawObjects(application);
 
 		application->UpdateGameObjects();

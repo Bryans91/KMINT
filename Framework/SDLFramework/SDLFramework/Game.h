@@ -11,7 +11,7 @@
 class Game
 {
 public:
-	Game();
+	Game(FWApplication* application);
 	~Game();
 
 	void createGraph(std::string filename, int blockWidth, int blockHeight);
@@ -27,5 +27,6 @@ private:
 	std::shared_ptr<GraphWalker>  dog;
 	std::shared_ptr<GraphWalker>  mister;
 	std::shared_ptr<GraphWalker>  misses;
+	FWApplication* application;
 };
 

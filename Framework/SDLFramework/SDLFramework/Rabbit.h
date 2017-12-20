@@ -1,8 +1,9 @@
 #pragma once
 #include "Vector2.h"
 #include "FWApplication.h"
+#include "IGameObject.h"
 //FORCE DRIVEN ENTITY
-class Rabbit
+class Rabbit : public IGameObject
 {
 public:
 	Rabbit();
@@ -10,8 +11,8 @@ public:
 	~Rabbit();
 
 	void draw(FWApplication* application);
-	void update();
-
+	// Inherited via IGameObject
+	virtual void Update(float deltaTime) override;
 private:
 	//functions
 	void wander();
@@ -37,10 +38,13 @@ private:
 	float m_MaxTurnrate;
 
 	//for drawing
-	int width = 5;
-	int height = 5;
+	bool mActive = true;
+	int mWidth = 5;
+	int mHeight = 5;
 	
-	int posX;
-	int posY;
+	int mX;
+	int mY;
+
+
 };
 
