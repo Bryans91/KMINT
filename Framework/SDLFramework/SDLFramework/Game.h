@@ -17,6 +17,7 @@ public:
 	void createGraph(std::string filename, int blockWidth, int blockHeight);
 	void drawObjects(FWApplication* application);
 
+	void update();
 
 	//Testrabbit
 	//int x, int y, float cohesion,float seperation,float alignment,float m_Mass,float m_MaxSpeed,float m_MaxTurnrate
@@ -26,6 +27,5 @@ private:
 	std::shared_ptr<GraphWalker>  dog;
 	std::shared_ptr<GraphWalker>  mister;
 	std::shared_ptr<GraphWalker>  misses;
-
 };
 

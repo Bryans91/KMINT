@@ -7,7 +7,6 @@
 #include <memory>
 #include "Edge.h"
 
-
 class Edge;
 
 class Vertex

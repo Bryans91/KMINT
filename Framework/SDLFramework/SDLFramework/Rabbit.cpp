@@ -27,7 +27,17 @@ void Rabbit::draw(FWApplication* application)
 {
 	application->SetColor(Color(255, 255, 255, 255));
 	application->DrawRect(this->posX, this->posY, this->width, this->height, true);
+}
 
+void Rabbit::update()
+{
+	//update pos
+	this->m_Heading = Vector2(-1, -1);
+	this->m_Velocity = Vector2(1, 1);
+
+	this->posX = this->posX - 1;
+	this->posY = this->posY - 1;
+	
 }
 
 void Rabbit::wander()

@@ -52,6 +52,7 @@ int main(int args[])
 		// For the background
 		application->SetColor(Color(255, 255, 255, 255));
 
+		game.update();
 		game.drawObjects(application);
 
 		application->UpdateGameObjects();

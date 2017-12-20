@@ -12,6 +12,7 @@ Game::~Game()
 {
 }
 
+
 void Game::createGraph(std::string filename, int blockWidth, int blockHeight)
 {
 	this->graph = Graph(blockWidth, blockHeight);
@@ -22,4 +23,10 @@ void Game::drawObjects(FWApplication* application)
 {
 	this->graph.drawMap(application);
 	this->testRabbit.draw(application);
+}
+
+void Game::update()
+{
+	this->testRabbit.update();
+	//update other objects
 }

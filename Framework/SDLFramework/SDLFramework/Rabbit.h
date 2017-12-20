@@ -10,6 +10,7 @@ public:
 	~Rabbit();
 
 	void draw(FWApplication* application);
+	void update();
 
 private:
 	//functions
