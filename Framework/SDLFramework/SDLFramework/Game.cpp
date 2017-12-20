@@ -4,7 +4,7 @@ Game::Game()
 {
 	this->misses = std::shared_ptr<GraphWalker>(new GraphWalker);
 	this->mister = std::shared_ptr<GraphWalker>(new GraphWalker);
-	this->createGraph("map.txt", 10, 10);
+	this->createGraph("map.txt", 12, 14);
 	
 }
 
@@ -19,6 +19,7 @@ void Game::createGraph(std::string filename, int blockWidth, int blockHeight)
 	this->graph.loadMap(filename, this->mister, this->misses);
 }
 
-void Game::drawObjects(FWApplication application)
+void Game::drawObjects(FWApplication* application)
 {
+	this->graph.drawMap(application);
 }

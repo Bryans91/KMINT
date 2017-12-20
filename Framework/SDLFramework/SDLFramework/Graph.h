@@ -12,7 +12,7 @@ public:
 	~Graph();
 	
 	void loadMap(std::string filename, std::shared_ptr<GraphWalker>  mister, std::shared_ptr<GraphWalker>  misses);
-	void drawMap(FWApplication application);
+	void drawMap(FWApplication* application);
 
 private:
 	void setEdges(std::shared_ptr<Vertex> prev, std::shared_ptr<Vertex> current);

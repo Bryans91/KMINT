@@ -12,7 +12,7 @@ public:
 	~Game();
 
 	void createGraph(std::string filename, int blockWidth, int blockHeight);
-	void drawObjects(FWApplication application);
+	void drawObjects(FWApplication* application);
 
 private:
 	Graph graph;
