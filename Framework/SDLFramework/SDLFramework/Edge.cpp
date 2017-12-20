@@ -9,8 +9,8 @@ Edge::~Edge()
 {
 }
 
-std::shared_ptr<Vertex> Edge::getTarget(Vertex current)
+std::shared_ptr<Vertex> Edge::getTarget(std::shared_ptr<Vertex> current)
 {
-	if (current == this->A) return this->A;
-	return this->B;
+	if (current == this->A) return this->B;
+	return this->A;
 }

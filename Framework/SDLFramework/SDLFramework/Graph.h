@@ -15,8 +15,8 @@ public:
 	void drawMap(FWApplication application);
 
 private:
-	void setEdges();
-
+	void setEdges(std::shared_ptr<Vertex> prev, std::shared_ptr<Vertex> current);
+	void setLinks(std::shared_ptr<Vertex> prev , std::shared_ptr<Vertex> current);
 	std::shared_ptr<Vertex> topLeft;
 	std::vector<std::shared_ptr<Vertex>> verteces;
 	int x;

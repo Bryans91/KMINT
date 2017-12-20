@@ -48,9 +48,10 @@ public:
 	void setY(int y) { this->y = y; }
 	bool getY() const { return this->y; }
 
+	std::shared_ptr<Vertex> next = nullptr;
+
 private:
 	std::vector<std::shared_ptr<Edge>> neighbors;
-
 	int x;
 	int y;
 

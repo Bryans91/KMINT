@@ -11,7 +11,7 @@ public:
 	Edge();
 	~Edge();
 
-	std::shared_ptr<Vertex> getTarget(Vertex current);
+	std::shared_ptr<Vertex> getTarget(std::shared_ptr<Vertex> current);
 
 	std::shared_ptr<Vertex> A;
 	std::shared_ptr<Vertex> B;
