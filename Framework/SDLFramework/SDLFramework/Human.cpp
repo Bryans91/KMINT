@@ -2,8 +2,10 @@
 
 
 
-Human::Human()
+Human::Human(char gender)
 {
+	this->gender = gender;
+	GraphWalker::setType('H');
 }
 
 

@@ -3,8 +3,7 @@
 #include <iostream>
 #include <vector>
 #include <memory>
-
-
+#include "Human.h"
 
 Graph::Graph()
 {
@@ -104,52 +103,6 @@ void Graph::loadMap(std::string filename, std::shared_ptr<GraphWalker>  mister, 
 
 	this->x = xLength;
 	this->y = y;
-	
-
-	//cave == x30 y19  / 1246 nr
-	//test strings vector
-	//int print = 0;
-	//for each(std::shared_ptr<Vertex> v in this->verteces) {
-	//	if (print == this->x) {
-	//		print = 0;
-	//		std::cout << "\n";
-	//	}
-	//	
-	//	if (v->isWater()) std::cout << "~";
-	//	if (v->isCave()) std::cout << "O";
-	//	if (v->walker != nullptr) std::cout << "W";
-	//	else if (v->isGrass()) std::cout << "X";
-	//	//mr mss print TODO
-	//	
-	//	print++;
-	//}
-	//
-
-	//std::cout << "\n\n\n\n";
-
-	////checking neighbors
-	////expecting
-	//std::shared_ptr<Vertex> test = this->verteces[1245];
-	//for each(std::shared_ptr<Edge> e in test->getNeighbors()) 
-	//{
-	//	std::shared_ptr<Vertex> v = e->getTarget(test);
-	//	if (v->isWater()) std::cout << "~";
-	//	if (v->isCave()) std::cout << "O";
-	//	if (v->walker != nullptr) std::cout << "W";
-	//	else if (v->isGrass()) std::cout << "X";
-	//}
-
-
-	//test strings Linked list
-	/*std::shared_ptr<Vertex> v = this->topLeft;
-	while (v != nullptr) {
-
-		if (v->isWater()) std::cout << "~";
-		if (v->isCave()) std::cout << "O";
-		if (v->walker != nullptr) std::cout << "W";
-		else if (v->isGrass()) std::cout << "X";
-		v = v->next;
-	}*/
 }
 
 void Graph::drawMap(FWApplication* application)
@@ -167,7 +120,21 @@ void Graph::drawMap(FWApplication* application)
 
 		if (v->isWater()) application->SetColor(Color(0, 0, 200, 255));
 		else if (v->isCave()) application->SetColor(Color(100, 100, 100, 255));
-		else if (v->walker != nullptr) application->SetColor(Color(200, 0, 0, 255)); //MALE: 200 0 0 255  // FEMALE 255 0 255 255
+		else if (v->walker != nullptr){
+			if (v->walker->getType() == 'H') {
+				//cast to human
+				std::shared_ptr<Human> human = std::dynamic_pointer_cast<Human>(v->walker);
+				if (human->gender == 'M') {
+					application->SetColor(Color(200, 0, 0, 255)); //MALE: 200 0 0 255  // FEMALE 255 0 255 255
+				}
+				else if (human->gender == 'F') {
+					application->SetColor(Color(255, 0, 255, 255));
+				}
+			}
+			else if (v->walker->getType() == 'D') {
+				//DOG!!!
+			}
+		}
 		else if (v->isGrass()) application->SetColor(Color(0, 200, 0, 255));
 		
 		application->DrawRect(startPosX,startPosY, this->blockWidth, this->blockHeight, true);

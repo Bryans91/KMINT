@@ -46,7 +46,6 @@ int main(int args[])
 		}
 
 		
-		
 		application->SetColor(Color(0, 0, 0, 255));
 		application->DrawText("Welcome to KMint", 800 / 2, 600 / 2);
 

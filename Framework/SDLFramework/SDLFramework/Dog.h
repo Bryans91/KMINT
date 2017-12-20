@@ -5,6 +5,6 @@ class Dog :
 {
 public:
 	Dog();
-	~Dog();
+	virtual ~Dog();
 };
 

@@ -1,11 +1,10 @@
 #include "Game.h"
-
+#include "Human.h"
 Game::Game()
 {
-	this->misses = std::shared_ptr<GraphWalker>(new GraphWalker);
-	this->mister = std::shared_ptr<GraphWalker>(new GraphWalker);
-	this->createGraph("map.txt", 12, 16);
-	
+	this->misses = std::shared_ptr<GraphWalker>(new Human('F'));
+	this->mister = std::shared_ptr<GraphWalker>(new Human('M'));
+	this->createGraph("map.txt", 12, 16);	
 }
 
 
