@@ -64,10 +64,6 @@ float Vector2::distanceTo(const Vector2 & destination)
 {
 	float differenceX = this->x - destination.getX();
 	float differenceY = this->y - destination.getY();
-	if (isnan(x) || isnan(y))
-	{
-		std::cout << "Vector2 contains value which is not a number";
-	}
 	int i = abs(differenceX*differenceX + differenceY * differenceY);
 	float distance = sqrt(i);
 	return fabs(distance);
@@ -77,10 +73,7 @@ Vector2& Vector2::operator+=(const Vector2& toAdd)
 {
 	x += toAdd.getX();
 	y += toAdd.getY();
-	if (isnan(x) || isnan(y))
-	{
-		std::cout << "Vector2 contains value which is not a number";
-	}
+
 	return *this;
 }
 
@@ -102,10 +95,6 @@ Vector2 Vector2::operator-=(const Vector2 & toSubstract)
 {
 	this->x -= toSubstract.getX();
 	this->y -= toSubstract.getY();
-	if (isnan(x) || isnan(y))
-	{
-		std::cout << "Vector2 contains value which is not a number";
-	}
 	return *this;
 }
 
@@ -119,10 +108,6 @@ Vector2 Vector2::operator/(const float scalar)
 	float x = this->x / scalar;
 	float y = this->y / scalar;
 
-	if (isnan(x) || isnan(y))
-	{
-		std::cout << "Vector2 contains value which is not a number";
-	}
 	return Vector2(this->x, this->y);
 }
 
@@ -130,11 +115,6 @@ Vector2 Vector2::operator*(const float scalar)
 {
 	float x = this->x * scalar;
 	float y = this->y * scalar;
-
-	if (isnan(x) || isnan(y))
-	{
-		std::cout << "Vector2 contains value which is not a number";
-	}
 	return Vector2(x, y);
 }
 
@@ -143,10 +123,7 @@ Vector2 & Vector2::operator*=(const float scalar)
 {
 	x = this->x * scalar;
 	y = this->y * scalar;
-	if (isnan(x) || isnan(y))
-	{
-		std::cout << "Vector2 contains value which is not a number";
-	}
+	if (isnan(this->x) || isnan(this->y))
 	return *this;
 }
 
@@ -161,10 +138,6 @@ std::ostream & Vector2::operator<<(std::ostream & os)
 
 std::ostream & operator<<(std::ostream & os, const Vector2 & vector)
 {
-	if (isnan(vector.x) || isnan(vector.y))
-	{
-		os << "Vector2 contains value which is not a number";
-	}
 	os << vector.x << " , " << vector.y;
 	return os;
 }
