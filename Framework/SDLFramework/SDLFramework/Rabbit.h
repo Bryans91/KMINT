@@ -5,6 +5,7 @@ class Rabbit
 {
 public:
 	Rabbit();
+	Rabbit(float cohesion,float seperation,float alignment,float m_Mass,float m_MaxSpeed,float m_MaxTurnrate);
 	~Rabbit();
 
 	
