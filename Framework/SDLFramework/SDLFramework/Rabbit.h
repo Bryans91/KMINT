@@ -8,19 +8,11 @@ public:
 	Rabbit(float cohesion,float seperation,float alignment,float m_Mass,float m_MaxSpeed,float m_MaxTurnrate);
 	~Rabbit();
 
-	
-
 private:
 	//functions
 	
-	//wander()
-	
 
 	//Properties
-	/*
-		Cohesion (bij de groep blijven)
-		Seperation (
-	*/
 	float cohesion; //Bij de groep blijven 0 tot 1.0
 	float seperation; //Uit de buurt van anderen blijven 0 tot 1.0
 	float alignment; //Zelfde kant als zijn buren 0 tot 1.0

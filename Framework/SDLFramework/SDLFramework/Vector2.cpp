@@ -100,10 +100,7 @@ Vector2 Vector2::operator-=(const Vector2 & toSubstract)
 
 Vector2 Vector2::operator/(const float scalar)
 {
-	if (scalar == 0)
-	{
-		return Vector2(this->x, this->y);
-	}
+	if (scalar == 0) return Vector2(this->x, this->y);
 
 	float x = this->x / scalar;
 	float y = this->y / scalar;
@@ -123,7 +120,6 @@ Vector2 & Vector2::operator*=(const float scalar)
 {
 	x = this->x * scalar;
 	y = this->y * scalar;
-	if (isnan(this->x) || isnan(this->y))
 	return *this;
 }
 
