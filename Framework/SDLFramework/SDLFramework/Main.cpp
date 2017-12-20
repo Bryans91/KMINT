@@ -21,7 +21,7 @@ int main(int args[])
 	application->SetColor(Color(255, 10, 40, 255));
 	
 	Game game;
-	game.createGraph("map.txt",10,10);
+	
 
 	//while (true){}
 	while (application->IsRunning())
@@ -46,12 +46,13 @@ int main(int args[])
 		}
 
 		
-		
 		application->SetColor(Color(0, 0, 0, 255));
 		application->DrawText("Welcome to KMint", 800 / 2, 600 / 2);
 
 		// For the background
 		application->SetColor(Color(255, 255, 255, 255));
+
+		game.drawObjects(application);
 
 		application->UpdateGameObjects();
 		application->RenderGameObjects();

@@ -18,7 +18,7 @@ public:
 	int getDrankCount();
 	void increaseDrankCount();
 
-	~Dog();
+	virtual ~Dog();
 private:
 	// Current thirst level
 	int _thirstLevel;

@@ -4,7 +4,9 @@ class Human :
 	public GraphWalker
 {
 public:
-	Human();
-	~Human();
+	char gender;
+
+	Human(char gender);
+	virtual ~Human();
 };
 
