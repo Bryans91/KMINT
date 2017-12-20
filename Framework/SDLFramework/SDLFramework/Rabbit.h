@@ -1,16 +1,20 @@
 #pragma once
 #include "Vector2.h"
+#include "FWApplication.h"
 //FORCE DRIVEN ENTITY
 class Rabbit
 {
 public:
 	Rabbit();
-	Rabbit(float cohesion,float seperation,float alignment,float m_Mass,float m_MaxSpeed,float m_MaxTurnrate);
+	Rabbit(int x, int y, float cohesion,float seperation,float alignment,float m_Mass,float m_MaxSpeed,float m_MaxTurnrate);
 	~Rabbit();
+
+	void draw(FWApplication* application);
 
 private:
 	//functions
-	
+	void wander();
+
 
 	//Properties
 	float cohesion; //Bij de groep blijven 0 tot 1.0
@@ -34,5 +38,8 @@ private:
 	//for drawing
 	int width = 5;
 	int height = 5;
+	
+	int posX;
+	int posY;
 };
 

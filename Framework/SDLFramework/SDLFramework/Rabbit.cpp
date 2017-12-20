@@ -6,8 +6,10 @@ Rabbit::Rabbit()
 {
 }
 
-Rabbit::Rabbit(float cohesion, float seperation, float alignment, float m_Mass, float m_MaxSpeed, float m_MaxTurnrate)
+Rabbit::Rabbit(int x, int y, float cohesion, float seperation, float alignment, float m_Mass, float m_MaxSpeed, float m_MaxTurnrate)
 {
+	this->posX = x;
+	this->posY = y;
 	this->cohesion = cohesion;
 	this->seperation = seperation;
 	this->alignment = alignment;
@@ -19,4 +21,16 @@ Rabbit::Rabbit(float cohesion, float seperation, float alignment, float m_Mass, 
 
 Rabbit::~Rabbit()
 {
+}
+
+void Rabbit::draw(FWApplication* application)
+{
+	application->SetColor(Color(255, 255, 255, 255));
+	application->DrawRect(this->posX, this->posY, this->width, this->height, true);
+
+}
+
+void Rabbit::wander()
+{
+
 }
