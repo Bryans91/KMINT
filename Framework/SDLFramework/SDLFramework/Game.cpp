@@ -1,5 +1,7 @@
 #include "Game.h"
 #include "Human.h"
+#include "Utilities.h"
+
 Game::Game(FWApplication* application)
 {
 	this->misses = std::shared_ptr<GraphWalker>(new Human('F'));
@@ -24,7 +26,7 @@ void Game::createGraph(std::string filename, int blockWidth, int blockHeight)
 
 void Game::drawObjects(FWApplication* application)
 {
-	std::cout << this->testRabbit.DistanceTo(0,0);
+	//std::cout << this->testRabbit.DistanceTo(0,0);
 
 	this->graph.drawMap(application);
 	this->testRabbit.draw(application);

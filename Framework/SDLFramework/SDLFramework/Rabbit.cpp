@@ -1,7 +1,5 @@
 #include "Rabbit.h"
 
-
-
 Rabbit::Rabbit()
 {
 }
@@ -19,7 +17,7 @@ Rabbit::Rabbit(int x, int y, float cohesion, float seperation, float alignment, 
 
 	IGameObject::mWidth = this->mWidth;
 	IGameObject::mHeight = this->mHeight;
-	
+
 }
 
 
@@ -35,11 +33,23 @@ void Rabbit::draw(FWApplication* application)
 
 void Rabbit::wander()
 {
+	
 
+
+	
+}
+
+//setting angle
+void Rabbit::setHeading(float radian)
+{
+
+	this->m_Heading.setX(cos(radian));
+	this->m_Heading.setY(sin(radian));
 }
 
 void Rabbit::Update(float deltaTime)
 {	
+	
 	//testupdate
 	this->mX = this->mX - 1;
 	this->mY = this->mY - 1;

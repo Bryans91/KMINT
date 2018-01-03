@@ -13,10 +13,18 @@ public:
 	void draw(FWApplication* application);
 	// Inherited via IGameObject
 	virtual void Update(float deltaTime) override;
+
+	float RandomFloat(float a, float b) {
+		float random = ((float)rand()) / (float)RAND_MAX;
+		float diff = b - a;
+		float r = random * diff;
+		return a + r;
+	}
 private:
 	//functions
 	void wander();
 
+	void setHeading(float radian);
 
 	//Properties
 	float cohesion; //Bij de groep blijven 0 tot 1.0
@@ -45,6 +53,8 @@ private:
 	int mX;
 	int mY;
 
-
+	/*set_acceleration(force() / mass());
+	set_velocity(velocity() + acceleration * dt);
+	set_position(position() + velocity() * dt);*/
 };
 
