@@ -1,12 +1,10 @@
 #include "Utilities.h"
 
 //init
-std::default_random_engine Utilities::randomEngine = std::default_random_engine{};
-
+std::default_random_engine Utilities::randomEngine(std::random_device{}());
 
 Utilities::Utilities()
 {
-
 }
 
 

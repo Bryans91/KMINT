@@ -1,4 +1,5 @@
 #include "Rabbit.h"
+#include "Utilities.h"
 
 Rabbit::Rabbit()
 {
@@ -17,6 +18,8 @@ Rabbit::Rabbit(int x, int y, float cohesion, float seperation, float alignment, 
 
 	IGameObject::mWidth = this->mWidth;
 	IGameObject::mHeight = this->mHeight;
+
+	this->setHeading(Utilities::randomFloat(-1, 1));
 
 }
 
@@ -45,6 +48,8 @@ void Rabbit::setHeading(float radian)
 
 	this->m_Heading.setX(cos(radian));
 	this->m_Heading.setY(sin(radian));
+
+	std::cout << this->m_Heading;
 }
 
 void Rabbit::Update(float deltaTime)
