@@ -4,6 +4,7 @@
 #include <vector>
 #include <memory>
 #include "Human.h"
+#include "Dog.h"
 
 Graph::Graph()
 {
@@ -19,7 +20,7 @@ Graph::~Graph()
 {
 }
 
-void Graph::loadMap(std::string filename, std::shared_ptr<GraphWalker>  mister, std::shared_ptr<GraphWalker> misses)
+void Graph::loadMap(std::string filename, std::shared_ptr<GraphWalker> dog, std::shared_ptr<GraphWalker> mister, std::shared_ptr<GraphWalker> misses)
 {
 	int x = 0;
 	int xLength = 0;
@@ -29,6 +30,7 @@ void Graph::loadMap(std::string filename, std::shared_ptr<GraphWalker>  mister, 
 	std::ifstream in(filename);
 	std::string str;
 
+	bool dogset = false;
 	bool mrset = false;
 	bool msset = false;
 	std::shared_ptr<Vertex> prev = nullptr;
@@ -39,6 +41,7 @@ void Graph::loadMap(std::string filename, std::shared_ptr<GraphWalker>  mister, 
 		if (y == 1) xLength = x;
 		x = 0;
 		//per char in line
+		cout << str << endl;
 		for (char& c : str) {
 			//create temp vertex
 			std::shared_ptr<Vertex> temp (new Vertex());
@@ -72,15 +75,24 @@ void Graph::loadMap(std::string filename, std::shared_ptr<GraphWalker>  mister, 
 					//water
 					temp->setWater(true);
 					break;
+				case 'D':
+					//schaap
+					if (!dogset) temp->walker = dog;
+					dog->setPosition(temp);
+					mrset = true;
+					temp->setGrass(true);
+					break;
 				case 'M':
 					//meneer janssen
 					if(!mrset) temp->walker = mister;
+					mister->setPosition(temp);
 					mrset = true;
 					temp->setGrass(true);
 					break;
 				case 'V':
 					//mevrouw janssen
 					if(!msset) temp->walker = misses;
+					misses->setPosition(temp);
 					msset = true;
 					temp->setGrass(true);
 					break;
@@ -132,7 +144,7 @@ void Graph::drawMap(FWApplication* application)
 				}
 			}
 			else if (v->walker->getType() == 'D') {
-				//DOG!!!
+				application->SetColor(Color(0, 0, 0, 255));
 			}
 		}
 		else if (v->isGrass()) application->SetColor(Color(0, 200, 0, 255));

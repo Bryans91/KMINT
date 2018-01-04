@@ -11,7 +11,7 @@ public:
 	Graph(int blockWidth,int blockHeight);
 	~Graph();
 	
-	void loadMap(std::string filename, std::shared_ptr<GraphWalker>  mister, std::shared_ptr<GraphWalker>  misses);
+	void loadMap(std::string filename, std::shared_ptr<GraphWalker> dog,  std::shared_ptr<GraphWalker> mister, std::shared_ptr<GraphWalker>  misses);
 	void drawMap(FWApplication* application);
 
 private:
