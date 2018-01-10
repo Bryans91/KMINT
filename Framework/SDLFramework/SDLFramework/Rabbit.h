@@ -2,6 +2,8 @@
 #include "Vector2.h"
 #include "FWApplication.h"
 #include "IGameObject.h"
+#include <vector>
+
 //FORCE DRIVEN ENTITY
 class Rabbit : public IGameObject
 {
@@ -22,9 +24,20 @@ public:
 	}
 private:
 	//functions
-	void wander();
+	void applyWander();
 
 	void setHeading(float radian);
+
+
+	void applySeperation(std::vector<Rabbit> rabbits);
+	void applyCohesion(std::vector<Rabbit> rabbits);
+	void applyAlignment(std::vector<Rabbit> rabbits);
+
+
+
+
+	/*void applyDogattract();
+	void applyWaterattract();*/
 
 	//Properties
 	float cohesion; //Bij de groep blijven 0 tot 1.0
@@ -52,6 +65,10 @@ private:
 	
 	int mX;
 	int mY;
+
+	Vector2 set_acceleration(Vector2 force);
+	void set_velocity(Vector2 acceleration,float dt);
+	void set_position(Vector2 velocity, float dt);
 
 	/*set_acceleration(force() / mass());
 	set_velocity(velocity() + acceleration * dt);
