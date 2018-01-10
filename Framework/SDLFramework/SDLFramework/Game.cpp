@@ -1,9 +1,11 @@
 #include "Game.h"
 #include "Human.h"
 #include "Utilities.h"
+#include "Dog.h"
 
 Game::Game(FWApplication* application)
 {
+	this->dog = std::shared_ptr<GraphWalker>(new Dog());
 	this->misses = std::shared_ptr<GraphWalker>(new Human('F'));
 	this->mister = std::shared_ptr<GraphWalker>(new Human('M'));
 	this->createGraph("map.txt", 12, 16);
@@ -21,7 +23,7 @@ Game::~Game()
 void Game::createGraph(std::string filename, int blockWidth, int blockHeight)
 {
 	this->graph = Graph(blockWidth, blockHeight);
-	this->graph.loadMap(filename, this->mister, this->misses);
+	this->graph.loadMap(filename, this->dog, this->mister, this->misses);
 }
 
 void Game::drawObjects(FWApplication* application)
