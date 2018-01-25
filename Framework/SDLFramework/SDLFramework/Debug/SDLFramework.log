@@ -1,6 +1,6 @@
-﻿  Main.cpp
-c:\users\bryan\source\repos\kmint\framework\sdlframework\sdlframework\main.cpp(43): warning C4065: switch statement contains 'default' but no 'case' labels
-  Graph.cpp
-  Game.cpp
-  Generating Code...
+﻿  Rabbit.cpp
+c:\users\bryan\source\repos\kmint\framework\sdlframework\sdlframework\rabbit.cpp(22): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\bryan\source\repos\kmint\framework\sdlframework\sdlframework\rabbit.cpp(59): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\bryan\source\repos\kmint\framework\sdlframework\sdlframework\rabbit.cpp(60): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\bryan\source\repos\kmint\framework\sdlframework\sdlframework\rabbit.cpp(114): warning C4244: 'argument': conversion from 'int' to 'const float', possible loss of data
   SDLFramework.vcxproj -> C:\Users\bryan\source\repos\KMINT\Framework\SDLFramework\Debug\SDLFramework.exe

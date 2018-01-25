@@ -3,6 +3,7 @@
 #include "FWApplication.h"
 #include "IGameObject.h"
 #include <vector>
+#include <memory>
 
 //FORCE DRIVEN ENTITY
 class Rabbit : public IGameObject
@@ -13,31 +14,21 @@ public:
 	~Rabbit();
 
 	void draw(FWApplication* application);
+	
+	void setRabbits(std::shared_ptr<std::vector<Rabbit*>> rabbits) { this->rabbits = rabbits; }
+
+
 	// Inherited via IGameObject
 	virtual void Update(float deltaTime) override;
 
-	float RandomFloat(float a, float b) {
-		float random = ((float)rand()) / (float)RAND_MAX;
-		float diff = b - a;
-		float r = random * diff;
-		return a + r;
-	}
 private:
 	//functions
-	void applyWander();
 
-	void setHeading(float radian);
+	Vector2 applySeperation();
+	Vector2 applyCohesion();
+	Vector2 applyAlignment();
 
-
-	void applySeperation(std::vector<Rabbit> rabbits);
-	void applyCohesion(std::vector<Rabbit> rabbits);
-	void applyAlignment(std::vector<Rabbit> rabbits);
-
-
-
-
-	/*void applyDogattract();
-	void applyWaterattract();*/
+	Vector2 seek(Vector2 target);
 
 	//Properties
 	float cohesion; //Bij de groep blijven 0 tot 1.0
@@ -49,14 +40,17 @@ private:
 
 
 	//Forces
-	Vector2 m_Velocity;
-	Vector2 m_Heading;
-	Vector2 m_Side;
+	Vector2 position;
+	Vector2 velocity;
+	Vector2 acceleration;
 	
 	float m_Mass;
 	float m_MaxSpeed;
 	float m_MaxForce;
 	float m_MaxTurnrate;
+	
+	//rabbits collection
+	std::shared_ptr<std::vector<Rabbit*>> rabbits;
 
 	//for drawing
 	bool mActive = true;
@@ -65,13 +59,5 @@ private:
 	
 	int mX;
 	int mY;
-
-	Vector2 set_acceleration(Vector2 force);
-	void set_velocity(Vector2 acceleration,float dt);
-	void set_position(Vector2 velocity, float dt);
-
-	/*set_acceleration(force() / mass());
-	set_velocity(velocity() + acceleration * dt);
-	set_position(position() + velocity() * dt);*/
 };
 

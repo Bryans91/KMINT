@@ -86,6 +86,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Dog.cpp" />
+    <ClCompile Include="DogDrinking.cpp" />
+    <ClCompile Include="DogHunting.cpp" />
+    <ClCompile Include="DogSleeping.cpp" />
+    <ClCompile Include="DogState.cpp" />
+    <ClCompile Include="DogWandering.cpp" />
     <ClCompile Include="Edge.cpp" />
     <ClCompile Include="FWApplication.cpp" />
     <ClCompile Include="Game.cpp" />
@@ -95,6 +100,8 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Rabbit.cpp" />
     <ClCompile Include="State.cpp" />
+    <ClCompile Include="Utilities.cpp" />
+    <ClCompile Include="Vector2.cpp" />
     <ClCompile Include="Vertex.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -103,6 +110,11 @@
   <ItemGroup>
     <ClInclude Include="Config.h" />
     <ClInclude Include="Dog.h" />
+    <ClInclude Include="DogDrinking.h" />
+    <ClInclude Include="DogHunting.h" />
+    <ClInclude Include="DogSleeping.h" />
+    <ClInclude Include="DogState.h" />
+    <ClInclude Include="DogWandering.h" />
     <ClInclude Include="Edge.h" />
     <ClInclude Include="FWApplication.h" />
     <ClInclude Include="Game.h" />
@@ -112,6 +124,8 @@
     <ClInclude Include="IGameObject.h" />
     <ClInclude Include="Rabbit.h" />
     <ClInclude Include="State.h" />
+    <ClInclude Include="Utilities.h" />
+    <ClInclude Include="Vector2.h" />
     <ClInclude Include="Vertex.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

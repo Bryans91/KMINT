@@ -47,6 +47,27 @@
     <ClCompile Include="Game.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Vector2.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Utilities.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DogDrinking.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DogHunting.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DogSleeping.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DogState.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DogWandering.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="SDL2.dll" />
@@ -86,6 +107,27 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Game.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector2.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Utilities.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DogDrinking.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DogHunting.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DogSleeping.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DogState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DogWandering.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

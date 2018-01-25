@@ -5,7 +5,7 @@
 #include "FWApplication.h"
 #include "GraphWalker.h"
 #include "Rabbit.h"
-
+#include <vector>
 
 
 class Game
@@ -18,10 +18,7 @@ public:
 	void drawObjects(FWApplication* application);
 
 	void update();
-
-	//Testrabbit
-	//int x, int y, float cohesion,float seperation,float alignment,float m_Mass,float m_MaxSpeed,float m_MaxTurnrate
-	Rabbit testRabbit = Rabbit(500,500,0,0,0,1,1,1);
+	std::shared_ptr<std::vector<Rabbit*>> liveRabbits;
 private:
 	Graph graph;
 	std::shared_ptr<GraphWalker>  dog;
