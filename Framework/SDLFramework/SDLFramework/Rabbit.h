@@ -30,6 +30,7 @@ private:
 	Vector2 applySeperation();
 	Vector2 applyCohesion();
 	Vector2 applyAlignment();
+	Vector2 applyWander();
 
 	Vector2 seek(Vector2 target);
 

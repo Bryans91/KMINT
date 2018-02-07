@@ -17,7 +17,7 @@ Game::Game(FWApplication* application)
 	//generate rabbits
 	for (int i = 0; i < 10; i++) {
 		//int x, int y, float cohesion, float seperation, float alignment, float m_Mass, float m_MaxSpeed, float m_MaxTurnrate
-		this->liveRabbits->push_back(new Rabbit(200 + (i * 10), 500,/* Coh */ 1 ,/* sep */ 0.00075 , /* ali */1 , 1, 25, 0.5));
+		this->liveRabbits->push_back(new Rabbit(200 + (i * 10), 500,/* Coh */ 0.75 ,/* sep */ 0.125 , /* ali */1 , 1, 3, 0.5));
 		if (i == 5)this->liveRabbits->at(i)->leader = true;
 	}
 	int i = 0;

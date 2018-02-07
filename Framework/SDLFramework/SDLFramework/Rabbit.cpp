@@ -66,8 +66,12 @@ void Rabbit::Update(float deltaTime)
 	if (this->leader) {
 		this->randomForce();
 	}
-	
-	this->position += this->acceleration.normalized();
+	this->velocity += this->acceleration;
+	//reset acceleration
+	this->acceleration*= 0;
+
+	this->velocity.truncate(this->m_MaxSpeed);
+	this->position += this->velocity;
 
 	
 
@@ -166,7 +170,18 @@ Vector2 Rabbit::applyAlignment()
 	}
 }
 
-Vector2 Rabbit::seek(Vector2 target )
+Vector2 Rabbit::applyWander()
+{
+	float radius = 15;
+	Vector2 center = this->position + this->velocity;
+
+	Vector2 target;
+	
+
+	return seek(target);
+}
+
+Vector2 Rabbit::seek(Vector2 target)
 {
 	Vector2 desired =  target - this->position;  // A vector pointing from the position to the target
 	// Scale to maximum speed
