@@ -29,7 +29,7 @@ public:
 	Vector2 operator-=(const Vector2&);
 	Vector2 operator/(const float);
 	Vector2 operator*(const float);
-	Vector2& operator *=(const float);
+	Vector2& operator*=(const float);
 	//print operators
 	friend std::ostream& operator<<(std::ostream& os, const Vector2& vector);
 	std::ostream& operator<<(std::ostream&);

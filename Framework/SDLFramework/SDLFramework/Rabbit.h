@@ -13,10 +13,13 @@ public:
 	Rabbit(int x, int y, float cohesion,float seperation,float alignment,float m_Mass,float m_MaxSpeed,float m_MaxTurnrate);
 	~Rabbit();
 
+	bool leader = false;
+
 	void draw(FWApplication* application);
 	
 	void setRabbits(std::shared_ptr<std::vector<Rabbit*>> rabbits) { this->rabbits = rabbits; }
-
+	
+	void randomForce();
 
 	// Inherited via IGameObject
 	virtual void Update(float deltaTime) override;
@@ -30,8 +33,11 @@ private:
 
 	Vector2 seek(Vector2 target);
 
+
+	float viewRange;
+
 	//Properties
-	float cohesion; //Bij de groep blijven 0 tot 1.0
+	float cohesion; //Bij de groep blijven 0 tot 1.0 
 	float seperation; //Uit de buurt van anderen blijven 0 tot 1.0
 	float alignment; //Zelfde kant als zijn buren 0 tot 1.0
 

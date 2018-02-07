@@ -16,14 +16,18 @@ Game::Game(FWApplication* application)
 
 	//generate rabbits
 	for (int i = 0; i < 10; i++) {
-		this->liveRabbits->push_back(new Rabbit(200 + (i * 10), 500, 1, -1, -0.5, 1, 1, 1));
+		//int x, int y, float cohesion, float seperation, float alignment, float m_Mass, float m_MaxSpeed, float m_MaxTurnrate
+		this->liveRabbits->push_back(new Rabbit(200 + (i * 10), 500,/* Coh */ 1 ,/* sep */ 0.00075 , /* ali */1 , 1, 25, 0.5));
+		if (i == 5)this->liveRabbits->at(i)->leader = true;
 	}
-	
+	int i = 0;
 	//set rabbit collections
 	for (Rabbit* rabbit : *this->liveRabbits) {
 		this->application->AddRenderable(rabbit);
 		rabbit->setRabbits(this->liveRabbits);
 	}
+
+
 
 }
 
@@ -43,8 +47,10 @@ void Game::drawObjects(FWApplication* application)
 {
 	
 	this->graph.drawMap(application);
+	
 	for (Rabbit* rabbit : *this->liveRabbits) {
 		rabbit->draw(application);
 	}
+	
 }
 

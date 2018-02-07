@@ -7,8 +7,7 @@ Rabbit::Rabbit()
 
 Rabbit::Rabbit(int x, int y, float cohesion, float seperation, float alignment, float m_Mass, float m_MaxSpeed, float m_MaxTurnrate)
 {
-	this->mX = x;
-	this->mY = y;
+	this->position = Vector2(x, y);
 	this->cohesion = cohesion;
 	this->seperation = seperation;
 	this->alignment = alignment;
@@ -19,7 +18,10 @@ Rabbit::Rabbit(int x, int y, float cohesion, float seperation, float alignment, 
 	IGameObject::mWidth = this->mWidth;
 	IGameObject::mHeight = this->mHeight;
 
-	this->position = Vector2(x, y);
+
+	this->viewRange = 35;
+
+	
 }
 
 
@@ -30,9 +32,14 @@ Rabbit::~Rabbit()
 void Rabbit::draw(FWApplication* application)
 {
 	application->SetColor(Color(255, 255, 255, 255));
-	application->DrawRect(this->mX, this->mY, this->mWidth, this->mHeight, true);
+	application->DrawRect(this->position.getX(), this->position.getY(), this->mWidth, this->mHeight, true);
 }
 
+
+void Rabbit::randomForce()
+{
+	this->acceleration = Vector2(Utilities::randomFloat(-5,4), Utilities::randomFloat(-5,4));
+}
 
 void Rabbit::Update(float deltaTime)
 {	
@@ -40,33 +47,38 @@ void Rabbit::Update(float deltaTime)
 	Vector2 ali = applyAlignment();      // Alignment
 	Vector2 coh = applyCohesion();   // Cohesion
 
-	std::cout << sep << " - " << ali << " - " << coh << "\n";
+
 	//edit vectors based on properties
 	sep *= this->seperation;
 	ali *= this->alignment;
 	coh *= this->cohesion;
+
+
+//	std::cout << sep << " - " << ali << " - " << coh << "\n";
 
 	//add vectors to acceleration
 	this->acceleration += sep;
 	this->acceleration += ali;
 	this->acceleration += coh;
 
-	this->acceleration.normalized();
-	std::cout << this->acceleration << "\n";
+	//std::cout<< " Pre " << this->acceleration << "\n";
 
-	this->position += this->acceleration;
+	if (this->leader) {
+		this->randomForce();
+	}
+	
+	this->position += this->acceleration.normalized();
 
-	this->mX = this->position.getX();
-	this->mY = this->position.getY();
 	
 
-	IGameObject::mX = this->mX;
-	IGameObject::mY = this->mY;
+	
+	IGameObject::mX = this->position.getX();
+	IGameObject::mY = this->position.getY();
 }
 
 Vector2 Rabbit::applySeperation()
 {
-	float desiredseparation = this->seperation;
+	float desiredseparation = this->viewRange;
 	Vector2 steer;
 	int count = 0;
 	// For every boid in the system, check if it's too close
@@ -74,9 +86,10 @@ Vector2 Rabbit::applySeperation()
 		float d = this->position.distanceTo(other->position);
 		// If the distance is greater than 0 and less than an arbitrary amount (0 when you are yourself)
 		if ((d > 0) && (d < desiredseparation)) {
+			
 			// Calculate vector pointing away from neighbor
 			Vector2 diff = position - other->position;
-			diff.normalized();
+			diff = diff.normalized();
 			diff = diff / d;        // Weight by distance
 			steer+= diff;
 			count++;            // Keep track of how many
@@ -84,34 +97,40 @@ Vector2 Rabbit::applySeperation()
 	}
 	// Average -- divide by how many
 	if (count > 0) {
-		steer = steer / (float)count;
+		steer = steer / count;
 	}
 
 	// As long as the vector is greater than 0
 	if (steer.getLength() > 0) {
 	
-		steer.normalized();
+		steer = steer.normalized();
 		steer *= this->m_MaxSpeed;
 		steer -= this->velocity;
-		steer.truncate(this->m_MaxForce);
+		steer.truncate(this->m_MaxSpeed);
 	}
 	return steer;
 }
 
 Vector2 Rabbit::applyCohesion()
 {
-	float neighbordist = this->cohesion;
+	float neighbordist = this->viewRange;
 	Vector2 sum =  Vector2(0, 0);   // Start with empty vector to accumulate all positions
 	int count = 0;
 	for (Rabbit* other : *this->rabbits) {
 		float d = position.distanceTo(other->position);
+
+	//	std::cout << "required distance: " << neighbordist << " - Distance: " << d << " \n";
 		if ((d > 0) && (d < neighbordist)) {
 			sum+= other->position; // Add position
 			count++;
 		}
 	}
+
+
+
 	if (count > 0) {
 		sum = sum / count;
+	
 		return seek(sum);  // Steer towards the position
 	}
 	else {
@@ -121,7 +140,7 @@ Vector2 Rabbit::applyCohesion()
 
 Vector2 Rabbit::applyAlignment()
 {
-	float neighbordist = this->alignment;
+	float neighbordist = this->viewRange;
 	Vector2 sum = Vector2(0, 0);
 	int count = 0;
 	for (Rabbit* other : *this->rabbits) {
@@ -135,7 +154,7 @@ Vector2 Rabbit::applyAlignment()
 	if (count > 0) {
 		sum = sum / (float)count;
 		
-		sum.normalized();
+		sum = sum.normalized();
 		sum *= this->m_MaxSpeed;
 		Vector2 steer = sum - this->velocity;
 		steer.truncate(this->m_MaxForce);
@@ -149,9 +168,9 @@ Vector2 Rabbit::applyAlignment()
 
 Vector2 Rabbit::seek(Vector2 target )
 {
-	Vector2 desired = target - this->position;  // A vector pointing from the position to the target
+	Vector2 desired =  target - this->position;  // A vector pointing from the position to the target
 	// Scale to maximum speed
-	desired.normalized();
+	desired = desired.normalized();
 	desired *= this->m_MaxSpeed;
 
 	// Steering = Desired minus Velocity

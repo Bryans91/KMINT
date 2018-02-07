@@ -105,7 +105,7 @@ Vector2 Vector2::operator/(const float scalar)
 	float x = this->x / scalar;
 	float y = this->y / scalar;
 
-	return Vector2(this->x, this->y);
+	return Vector2(x, y);
 }
 
 Vector2 Vector2::operator*(const float scalar)
@@ -118,8 +118,8 @@ Vector2 Vector2::operator*(const float scalar)
 
 Vector2 & Vector2::operator*=(const float scalar)
 {
-	x = this->x * scalar;
-	y = this->y * scalar;
+	this->x = this->x * scalar;
+	this->y = this->y * scalar;
 	return *this;
 }
 
