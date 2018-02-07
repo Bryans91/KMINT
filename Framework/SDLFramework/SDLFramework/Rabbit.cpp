@@ -1,5 +1,6 @@
 #include "Rabbit.h"
 #include "Utilities.h"
+#include <math.h>
 
 Rabbit::Rabbit()
 {
@@ -64,7 +65,7 @@ void Rabbit::Update(float deltaTime)
 	//std::cout<< " Pre " << this->acceleration << "\n";
 
 	if (this->leader) {
-		this->randomForce();
+		this->acceleration = this->applyWander();
 	}
 	this->velocity += this->acceleration;
 	//reset acceleration
@@ -175,8 +176,7 @@ Vector2 Rabbit::applyWander()
 	float radius = 15;
 	Vector2 center = this->position + this->velocity;
 
-	Vector2 target;
-	
+	Vector2 target(center.getX() + radius * std::cos(Utilities::randomInt(0, 360)), center.getY() + radius * sin(Utilities::randomInt(0, 360)));
 
 	return seek(target);
 }
