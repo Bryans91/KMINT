@@ -83,14 +83,14 @@ void Rabbit::Update(float deltaTime)
 {	
 	//acceleration
 	Vector2 force(Utilities::randomFloat(-800, 800), Utilities::randomFloat(-800, 800));
-	std::cout << "Force: " << force << "\n";
+	//std::cout << "Force: " << force << "\n";
 	Vector2 acceleration = set_acceleration(force);
-	std::cout << "Acceleration: " << acceleration << "\n";
+	//std::cout << "Acceleration: " << acceleration << "\n";
 	set_velocity(acceleration, deltaTime);
-	std::cout << "Velocity: " << this->m_Velocity << "\n";
+	//std::cout << "Velocity: " << this->m_Velocity << "\n";
 	set_position(this->m_Velocity, deltaTime);
-	std::cout << "X/Y: " << this->mX << " / " << this->mY << "\n";
-	std::cout << "\n\n";
+	//std::cout << "X/Y: " << this->mX << " / " << this->mY << "\n";
+	//std::cout << "\n\n";
 
 
 	IGameObject::mX = this->mX;

@@ -26,6 +26,18 @@ void Game::createGraph(std::string filename, int blockWidth, int blockHeight)
 	this->graph.loadMap(filename, this->dog, this->mister, this->misses);
 }
 
+void Game::update(int frame)
+{
+	// Assuming that 60 frames per second
+	if (frame % 15 == 0) {
+		this->dog->update(frame);
+	}
+	if (frame % 30 == 0) {
+		this->misses->update(frame);
+		this->mister->update(frame);
+	}
+}
+
 void Game::drawObjects(FWApplication* application)
 {
 	//std::cout << this->testRabbit.DistanceTo(0,0);

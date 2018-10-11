@@ -6,7 +6,6 @@
 
 using namespace std;
 
-// Forward declaration
 class DogState;
 
 enum DogStates {
@@ -21,6 +20,8 @@ class Dog :
 {
 public:
 	Dog();
+
+	void update(int frame);
 
 	void changeState(DogStates newState);
 

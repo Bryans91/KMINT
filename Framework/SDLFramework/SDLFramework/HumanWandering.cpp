@@ -1,5 +1,5 @@
 #include <iostream>
-#include "DogWandering.h"
+#include "HumanWandering.h"
 #include "Vertex.h"
 #include "Edge.h"
 #include "GraphWalker.h"
@@ -7,15 +7,14 @@
 
 using namespace std;
 
-DogWandering::DogWandering()
+HumanWandering::HumanWandering()
 {}
 
-// If bunny in 50px range (DogHunting)
-void DogWandering::update(Dog* schaap)
+void HumanWandering::update(Human* human)
 {
-	cout << "DogWandering" << endl;
+	cout << "HumanWandering" << endl;
 
-	shared_ptr<Vertex> position = schaap->GraphWalker::getPosition();
+	shared_ptr<Vertex> position = human->GraphWalker::getPosition();
 	vector<shared_ptr<Edge>> edges = position->getNeighbors();
 
 	// Wander
@@ -33,7 +32,7 @@ void DogWandering::update(Dog* schaap)
 				random_position_int % 2 != _lastDirection % 2 ||
 				!newposition->isWater() &&
 				attempt_counter > 10
-		) {
+				) {
 			_lastDirection = random_position_int;
 			new_position_found = true;
 		}
@@ -42,27 +41,27 @@ void DogWandering::update(Dog* schaap)
 		}
 	}
 	position->walker = nullptr;
-	newposition->walker = schaap->shared_from_this();
-	schaap->GraphWalker::setPosition(newposition);
+	newposition->walker = human->shared_from_this();
+	human->GraphWalker::setPosition(newposition);
 
 	// Check if there are rabbits nearby
-	bool rabbitInRange = schaap->isRabbitInRange();
+	//bool rabbitInRange = human->isRabbitInRange();
 
-	// Make Dog thirstier
-	schaap->increaseThirstCount();
-
-	if (schaap->isThirsty()) {
-		schaap->changeState(DogStates::DRINKING);
+	if (human->getSecondCount() % 20 == 0) {
+		human->changeState(HumanStates::PHOTOGRAPHING);
+		cout << "ZOMG" << endl << human->getSecondCount() << endl << "ZOMG" << endl;
 	}
+
+	/*
 	else if (rabbitInRange) {
-		schaap->changeState(DogStates::HUNTING);
-	}
+		human->changeState(HumanStates::FROZEN);
+	}*/
 
 
 	cout << "X: " << newposition->getX() << " Y: " << newposition->getY() << endl;
 }
 
-DogWandering::~DogWandering()
+HumanWandering::~HumanWandering()
 {
-	cout << "Removed DogWandering" << endl;
+	cout << "Removed HumanWandering" << endl;
 }

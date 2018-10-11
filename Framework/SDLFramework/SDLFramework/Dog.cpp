@@ -1,5 +1,7 @@
 #include "Dog.h"
 #include <iostream>
+#include "Vertex.h"
+#include "Edge.h"
 
 #include "DogWandering.h"
 #include "DogHunting.h"
@@ -11,15 +13,14 @@ using namespace std;
 Dog::Dog()
 {
 	GraphWalker::setType('D');
-	changeState(DogStates::WANDERING);
-	_state->update(this);
-	changeState(DogStates::HUNTING);
-	_state->update(this);
-	changeState(DogStates::DRINKING);
-	_state->update(this);
-	changeState(DogStates::SLEEPING);
-	_state->update(this);
 
+	// Starting state (:
+	this->changeState(DogStates::WANDERING);
+}
+
+void Dog::update(int frame)
+{
+	_state->update(this);
 }
 
 //Change state
@@ -53,13 +54,20 @@ void Dog::increaseThirstCount()
 
 bool Dog::isRabbitInRange()
 {
-	return closestRabbitDistance <= 50;
+	// Get rabbit position
+	if (getClosestRabbit() <= 15) {
+		// Eat the rabbit
+	}
+	if (getClosestRabbit() <= 50) {
+		return true;
+	}
+
+	return false;
 }
 
 int Dog::getClosestRabbit()
 {
-	closestRabbitDistance = 0; // target->position();
-	return 0;
+	return 100; // target->position();
 }
 
 int Dog::getDrankCount()

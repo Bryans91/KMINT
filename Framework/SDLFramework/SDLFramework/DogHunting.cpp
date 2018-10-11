@@ -11,13 +11,16 @@ DogHunting::DogHunting()
 void DogHunting::update(Dog* schaap)
 {
 	cout << "DogHunting" << endl;
+
+	// Make Dog thirstier
+	schaap->increaseThirstCount();
+
 	if (schaap->isThirsty()) {
 		schaap->changeState(DogStates::DRINKING);
 	}
 	else if (!schaap->isRabbitInRange()) {
 		schaap->changeState(DogStates::WANDERING);
 	}
-	schaap->increaseThirstCount();
 }
 
 DogHunting::~DogHunting()

@@ -24,6 +24,7 @@ int main(int args[])
 	
 
 	//while (true){}
+	int frame = 0;
 	while (application->IsRunning())
 	{
 		application->StartTick();
@@ -51,11 +52,19 @@ int main(int args[])
 
 		// For the background
 		application->SetColor(Color(255, 255, 255, 255));
+
+		game.update(frame);
+
 		game.drawObjects(application);
 
 		application->UpdateGameObjects();
 		application->RenderGameObjects();
 		application->EndTick();
+
+		frame++;
+		if (frame == 59) {
+			frame = 0;
+		}
 	}
 	_CrtDumpMemoryLeaks();
 	return EXIT_SUCCESS;

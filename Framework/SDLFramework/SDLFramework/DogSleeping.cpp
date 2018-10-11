@@ -10,6 +10,10 @@ DogSleeping::DogSleeping()
 void DogSleeping::update(Dog* schaap)
 {
 	cout << "DogSleeping" << endl;
+
+	if (schaap->isRabbitInRange()) {
+		schaap->changeState(DogStates::HUNTING);
+	}
 }
 
 DogSleeping::~DogSleeping()

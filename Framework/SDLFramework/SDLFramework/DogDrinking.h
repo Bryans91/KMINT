@@ -10,4 +10,5 @@ public:
 	virtual void update(Dog* schaap);
 protected:
 private:
+	shared_ptr<GraphWalker> the_chosen_one;
 };

@@ -79,7 +79,7 @@ void Graph::loadMap(std::string filename, std::shared_ptr<GraphWalker> dog, std:
 					//schaap
 					if (!dogset) temp->walker = dog;
 					dog->setPosition(temp);
-					mrset = true;
+					dogset = true;
 					temp->setGrass(true);
 					break;
 				case 'M':

@@ -42,10 +42,10 @@ public:
 	bool isWater() const { return this->water; }
 
 	void setX(int x) { this->x = x; }
-	bool getX() const { return this->x; }
+	int getX() const { return this->x; }
 
 	void setY(int y) { this->y = y; }
-	bool getY() const { return this->y; }
+	int getY() const { return this->y; }
 
 	std::shared_ptr<Vertex> next = nullptr;
 

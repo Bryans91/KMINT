@@ -10,4 +10,5 @@ public:
 	virtual void update(Dog* schaap);
 protected:
 private:
+	int _lastDirection = -5;
 };
